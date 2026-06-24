@@ -13,7 +13,7 @@ from . import agents
 
 
 gym.register(
-    id="Template-Dexgrasp-Direct-v0",
+    id="DexGrasp-Inspire-Direct-v0",
     entry_point=f"{__name__}.dexgrasp_env:DexgraspEnv",
     disable_env_checker=True,
     kwargs={

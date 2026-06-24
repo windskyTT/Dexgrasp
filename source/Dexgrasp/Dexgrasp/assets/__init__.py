@@ -1,0 +1,2 @@
+"""Dexgrasp asset configuration package."""
+

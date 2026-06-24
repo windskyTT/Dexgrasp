@@ -52,11 +52,14 @@ def main():
     index = 0
     # acquire all Isaac environments names
     for task_spec in gym.registry.values():
-        if "Template-" in task_spec.id and (args_cli.keyword is None or args_cli.keyword in task_spec.id):
-            # add details to table
-            table.add_row([index + 1, task_spec.id, task_spec.entry_point, task_spec.kwargs["env_cfg_entry_point"]])
-            # increment count
-            index += 1
+        if args_cli.keyword is not None and args_cli.keyword not in task_spec.id:
+            continue
+        if task_spec.entry_point is None or "Dexgrasp.tasks" not in str(task_spec.entry_point):
+            continue
+        # add details to table
+        table.add_row([index + 1, task_spec.id, task_spec.entry_point, task_spec.kwargs["env_cfg_entry_point"]])
+        # increment count
+        index += 1
 
     print(table)
 
